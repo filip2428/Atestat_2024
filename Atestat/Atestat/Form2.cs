@@ -27,7 +27,8 @@ namespace Atestat
 
         private void adaugăCărțiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Adaugare_carte add = new Adaugare_carte();
+            add.ShowDialog();
         }
     }
 }
