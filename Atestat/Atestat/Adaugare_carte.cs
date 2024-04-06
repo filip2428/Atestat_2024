@@ -55,13 +55,13 @@ namespace Atestat
                 catch (Exception ex)
                 {
                     //MessageBox.Show(ex.Message);
-                    MessageBox.Show("Una din datele introduse nu este corectă, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
             }
-            else MessageBox.Show("Căsuțele cu steluță sunt obligatorii", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch { MessageBox.Show("Una din datele introduse nu este corectă, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch { MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error); }
           
 
         }

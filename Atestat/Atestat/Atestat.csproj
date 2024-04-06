@@ -81,6 +81,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vizualizare_Carte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vizualizare_Carte.Designer.cs">
+      <DependentUpon>Vizualizare_Carte.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Adaugare_carte.resx">
       <DependentUpon>Adaugare_carte.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vizualizare_Carte.resx">
+      <DependentUpon>Vizualizare_Carte.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

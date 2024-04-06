@@ -30,5 +30,11 @@ namespace Atestat
             Adaugare_carte add = new Adaugare_carte();
             add.ShowDialog();
         }
+
+        private void vizualizareCărțiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vizualizare_Carte viz = new Vizualizare_Carte();
+            viz.ShowDialog();
+        }
     }
 }
