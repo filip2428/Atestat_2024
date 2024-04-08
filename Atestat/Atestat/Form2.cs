@@ -27,14 +27,20 @@ namespace Atestat
 
         private void adaugăCărțiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Adaugare_carte add = new Adaugare_carte();
-            add.ShowDialog();
+            Adaugare_carte addc = new Adaugare_carte();
+            addc.ShowDialog();
         }
 
         private void vizualizareCărțiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Vizualizare_Carte viz = new Vizualizare_Carte();
             viz.ShowDialog();
+        }
+
+        private void adaugăEleviToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Adauga_elevi adde = new Adauga_elevi();
+            adde.ShowDialog();
         }
     }
 }

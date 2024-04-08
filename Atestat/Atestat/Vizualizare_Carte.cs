@@ -155,5 +155,30 @@ namespace Atestat
                 MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Datele vor fi șterse definitiv. Confirmi?", "Șterge", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            {
+                con.Open();
+                string querry = "DELETE from date_carti WHERE Număr_de_inventar = '" + Row_id + "'";
+                SqlCommand cmd = new SqlCommand(querry, con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Sters cu succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                SqlCommand cmd2 = new SqlCommand("select * from date_carti", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd2);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                dataGridView1.DataSource = ds.Tables[0];
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panel1.Hide();
+        }
     }
 }

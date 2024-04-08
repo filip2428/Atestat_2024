@@ -67,6 +67,12 @@
     <Compile Include="Adaugare_carte.Designer.cs">
       <DependentUpon>Adaugare_carte.cs</DependentUpon>
     </Compile>
+    <Compile Include="Adauga_elevi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adauga_elevi.Designer.cs">
+      <DependentUpon>Adauga_elevi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <EmbeddedResource Include="Adaugare_carte.resx">
       <DependentUpon>Adaugare_carte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adauga_elevi.resx">
+      <DependentUpon>Adauga_elevi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
