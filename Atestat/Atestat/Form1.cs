@@ -60,7 +60,7 @@ namespace Atestat
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult res;
-            res = MessageBox.Show("Vrei să ieși din program?","Exit",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            res = MessageBox.Show("Vreiadm să ieși din program?","Exit",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
             if(res == DialogResult.Yes)
             {
                 Application.Exit();
@@ -75,6 +75,11 @@ namespace Atestat
                 password_text.UseSystemPasswordChar = false;
             }
             else password_text.UseSystemPasswordChar = true;
+        }
+
+        private void password_text_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -117,6 +117,7 @@
             this.informațiiDespreEleviToolStripMenuItem.Name = "informațiiDespreEleviToolStripMenuItem";
             this.informațiiDespreEleviToolStripMenuItem.Size = new System.Drawing.Size(271, 56);
             this.informațiiDespreEleviToolStripMenuItem.Text = "Informații despre elevi";
+            this.informațiiDespreEleviToolStripMenuItem.Click += new System.EventHandler(this.informațiiDespreEleviToolStripMenuItem_Click);
             // 
             // împrumutăToolStripMenuItem
             // 

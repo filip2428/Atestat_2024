@@ -42,5 +42,11 @@ namespace Atestat
             Adauga_elevi adde = new Adauga_elevi();
             adde.ShowDialog();
         }
+
+        private void informațiiDespreEleviToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vizualizare_Elevi vizElev = new Vizualizare_Elevi();
+            vizElev.ShowDialog();
+        }
     }
 }

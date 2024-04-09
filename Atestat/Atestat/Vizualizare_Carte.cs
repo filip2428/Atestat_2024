@@ -36,11 +36,11 @@ namespace Atestat
 
 
         }
-        int x;
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+        int x;
         Int64 Row_id;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
