@@ -172,6 +172,7 @@ namespace Atestat
                 da.Fill(ds);
 
                 dataGridView1.DataSource = ds.Tables[0];
+                panel1.Hide();
             }
 
         }
@@ -179,6 +180,33 @@ namespace Atestat
         private void button4_Click(object sender, EventArgs e)
         {
             panel1.Hide();
+        }
+
+        private void txt_nr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_detinute_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_imprumutate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

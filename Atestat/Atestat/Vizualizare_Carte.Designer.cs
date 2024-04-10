@@ -186,6 +186,7 @@
             this.txt_imprumutate.Name = "txt_imprumutate";
             this.txt_imprumutate.Size = new System.Drawing.Size(344, 30);
             this.txt_imprumutate.TabIndex = 19;
+            this.txt_imprumutate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_imprumutate_KeyPress);
             // 
             // txt_detinute
             // 
@@ -195,6 +196,7 @@
             this.txt_detinute.Name = "txt_detinute";
             this.txt_detinute.Size = new System.Drawing.Size(344, 30);
             this.txt_detinute.TabIndex = 18;
+            this.txt_detinute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_detinute_KeyPress);
             // 
             // txt_editura
             // 
@@ -240,6 +242,7 @@
             this.txt_nr.Name = "txt_nr";
             this.txt_nr.Size = new System.Drawing.Size(344, 30);
             this.txt_nr.TabIndex = 13;
+            this.txt_nr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nr_KeyPress);
             // 
             // label9
             // 

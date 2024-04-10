@@ -65,6 +65,7 @@
             this.txt_cnp.Name = "txt_cnp";
             this.txt_cnp.Size = new System.Drawing.Size(265, 36);
             this.txt_cnp.TabIndex = 1;
+            this.txt_cnp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cnp_KeyPress);
             // 
             // txt_nrmatricol
             // 
@@ -74,6 +75,7 @@
             this.txt_nrmatricol.Name = "txt_nrmatricol";
             this.txt_nrmatricol.Size = new System.Drawing.Size(265, 36);
             this.txt_nrmatricol.TabIndex = 2;
+            this.txt_nrmatricol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nrmatricol_KeyPress);
             // 
             // txt_nume
             // 

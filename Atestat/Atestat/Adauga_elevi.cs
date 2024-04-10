@@ -53,7 +53,7 @@ namespace Atestat
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                       // MessageBox.Show(ex.Message);
                         MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     con.Close();
@@ -84,6 +84,24 @@ namespace Atestat
                 this.Close();
             }
             else this.Show();
+        }
+
+        private void txt_nrmatricol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_cnp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

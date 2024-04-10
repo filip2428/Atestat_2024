@@ -34,6 +34,8 @@
             this.btn_refresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -53,8 +55,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,7 @@
             this.cauta_nume.Name = "cauta_nume";
             this.cauta_nume.Size = new System.Drawing.Size(352, 36);
             this.cauta_nume.TabIndex = 8;
+            this.cauta_nume.TextChanged += new System.EventHandler(this.cauta_nume_TextChanged);
             // 
             // btn_refresh
             // 
@@ -101,6 +102,7 @@
             this.btn_refresh.TabIndex = 9;
             this.btn_refresh.Text = "Refresh";
             this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // dataGridView1
             // 
@@ -111,6 +113,7 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1199, 478);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panel1
@@ -143,6 +146,28 @@
             this.panel1.Size = new System.Drawing.Size(1199, 299);
             this.panel1.TabIndex = 11;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(690, 142);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(103, 25);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Email Elev";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(672, 71);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(121, 25);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Telefon Elev";
+            // 
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -154,6 +179,7 @@
             this.button4.TabIndex = 23;
             this.button4.Text = "Cancel";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -166,6 +192,7 @@
             this.button3.TabIndex = 22;
             this.button3.Text = "Șterge";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -178,6 +205,7 @@
             this.button2.TabIndex = 21;
             this.button2.Text = "Schimbă";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txt_telParinte
             // 
@@ -250,6 +278,7 @@
             this.txt_nrmatricol.Name = "txt_nrmatricol";
             this.txt_nrmatricol.Size = new System.Drawing.Size(344, 30);
             this.txt_nrmatricol.TabIndex = 13;
+            this.txt_nrmatricol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nrmatricol_KeyPress);
             // 
             // label9
             // 
@@ -338,28 +367,6 @@
             this.label2.Size = new System.Drawing.Size(54, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "CNP";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(672, 71);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(121, 25);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Telefon Elev";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(690, 142);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 25);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Email Elev";
             // 
             // Vizualizare_Elevi
             // 
