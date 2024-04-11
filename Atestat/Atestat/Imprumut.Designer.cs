@@ -243,9 +243,10 @@
             this.search_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.search_result.Location = new System.Drawing.Point(781, 420);
             this.search_result.Name = "search_result";
+            this.search_result.RowHeadersVisible = false;
             this.search_result.RowHeadersWidth = 51;
             this.search_result.RowTemplate.Height = 24;
-            this.search_result.Size = new System.Drawing.Size(425, 50);
+            this.search_result.Size = new System.Drawing.Size(425, 223);
             this.search_result.TabIndex = 36;
             this.search_result.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.search_result_CellClick);
             // 

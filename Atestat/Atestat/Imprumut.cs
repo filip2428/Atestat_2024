@@ -28,31 +28,30 @@ namespace Atestat
         {
             try
             {
-                if (textBox6.TextLength >= 3)
+                if (textBox6.Text!="")
                 {
-                    con.Open();
-                    string querry = "Select Titlu, Autor from date_carti ";
+                    string querry = "Select Număr_de_inventar,Titlu, Autor from date_carti ";
                     querry += "WHERE Titlu LIKE '"+textBox6.Text+ "%'";
-                    SqlCommand cmd = con.CreateCommand();
-                    cmd.CommandText = querry;
-                    cmd.Parameters.AddWithValue("Titlu", textBox6.Text + "%");
-                    cmd.Parameters.AddWithValue("Autor", textBox6.Text + "%");
+                    SqlCommand cmd = new SqlCommand(querry,con);
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(dt);
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         search_result.DataSource = dt;
-                        search_result.Height = search_result.Rows.Count * 30;
+                        search_result.Height = 150;
                     }
                     else search_result.Height = 0;
-                    cmd.Dispose();
-                    da.Dispose();
-                    con.Close();
                 }
                 else
                 {
                     search_result.Height = 0;
+                    SqlCommand cmd = new SqlCommand("select Număr_de_inventar,Titlu, Autor from date_carti", con);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    search_result.DataSource = ds.Tables[0];
                 }
             }
             catch (Exception ex)
@@ -63,16 +62,35 @@ namespace Atestat
             
         }
 
+        int x;
         private void search_result_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow row = this.search_result.Rows[e.RowIndex];
-            textBox6.Text = row.Cells["result"].Value.ToString();
-            search_result.Height = 0;
+            try
+            {
+                /*DataGridViewRow row = this.search_result.Rows[e.RowIndex];
+                textBox6.Text = row.Cells["result"].Value.ToString();
+                search_result.Height = 0;*/
+                if (search_result.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+                    x = int.Parse(search_result.Rows[e.RowIndex].Cells[0].Value.ToString());
+                SqlCommand cmd = new SqlCommand("select * from date_carti WHERE Număr_de_inventar = " + x + "", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+
+                textBox6.Text = ds.Tables[0].Rows[0][1].ToString();
+                search_result.Height = 0;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void Imprumut_Load(object sender, EventArgs e)
         {
-           
+           search_result.Height= 0;
         }
     }
 }

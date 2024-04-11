@@ -44,25 +44,26 @@ namespace Atestat
         Int64 Row_id;
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 x = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             panel1.Visible = true;
-            SqlCommand cmd = new SqlCommand("select * from date_carti where Număr_de_inventar = " + x + "",con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
+            SqlCommand cmdd = new SqlCommand("select * from date_carti where Număr_de_inventar = " + x + "",con);
+            SqlDataAdapter daa = new SqlDataAdapter(cmdd);
+            DataSet dss = new DataSet();
+            daa.Fill(dss);
 
-            Row_id = Int64.Parse(ds.Tables[0].Rows[0][0].ToString());
+            Row_id = Int64.Parse(dss.Tables[0].Rows[0][0].ToString());
 
-            txt_nr.Text = ds.Tables[0].Rows[0][0].ToString();
-            txt_titlu.Text = ds.Tables[0].Rows[0][1].ToString();
-            txt_autor.Text = ds.Tables[0].Rows[0][2].ToString();
-            txt_categorie.Text = ds.Tables[0].Rows[0][3].ToString();
-            txt_editura.Text = ds.Tables[0].Rows[0][4].ToString();
-            txt_detinute.Text = ds.Tables[0].Rows[0][5].ToString();
-            txt_imprumutate.Text = ds.Tables[0].Rows[0][6].ToString();
-            txt_pozitie.Text = ds.Tables[0].Rows[0][7].ToString();
+            txt_nr.Text = dss.Tables[0].Rows[0][0].ToString();
+            txt_titlu.Text = dss.Tables[0].Rows[0][1].ToString();
+            txt_autor.Text = dss.Tables[0].Rows[0][2].ToString();
+            txt_categorie.Text = dss.Tables[0].Rows[0][3].ToString();
+            txt_editura.Text = dss.Tables[0].Rows[0][4].ToString();
+            txt_detinute.Text = dss.Tables[0].Rows[0][5].ToString();
+            txt_imprumutate.Text = dss.Tables[0].Rows[0][6].ToString();
+            txt_pozitie.Text = dss.Tables[0].Rows[0][7].ToString();
         }
 
         private void cauta_nume_TextChanged(object sender, EventArgs e)
