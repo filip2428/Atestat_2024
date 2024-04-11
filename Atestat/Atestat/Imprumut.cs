@@ -17,7 +17,8 @@ namespace Atestat
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Elev10\Desktop\Atestat\Atestat\Atestat\Carti.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Carti.mdf;Integrated Security=True");
+        SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Elevi.mdf;Integrated Security=True");
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -91,6 +92,37 @@ namespace Atestat
         private void Imprumut_Load(object sender, EventArgs e)
         {
            search_result.Height= 0;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            search.Clear();
+            txt_clasa.Clear();
+            txt_email.Clear();
+            txt_nume.Clear();
+            txt_prenume.Clear();
+            txt_telefon.Clear();
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (search.Text != "")
+                {
+                    string querry = "select * from date_elevi where Număr_matricol = '" + search.Text.ToString() + "'";
+                    SqlCommand cmd = new SqlCommand(querry, con2);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataSet ds = new DataSet();
+                    da.Fill(ds);
+
+                    txt_nume.Text = ds.Tables[0].Rows[0][2].ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

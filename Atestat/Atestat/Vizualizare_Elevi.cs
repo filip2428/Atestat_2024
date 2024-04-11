@@ -172,6 +172,7 @@ namespace Atestat
 
                 dataGridView1.DataSource = ds.Tables[0];
                 panel1.Hide();
+                con.Close( );
             }
         }
 
