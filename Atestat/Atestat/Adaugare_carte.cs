@@ -97,5 +97,10 @@ namespace Atestat
                 e.Handled = true;
             }
         }
+
+        private void Adaugare_carte_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

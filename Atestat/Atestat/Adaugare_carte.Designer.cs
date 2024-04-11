@@ -370,6 +370,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Adaugare_carte";
             this.Text = "Adaugare_carte";
+            this.Load += new System.EventHandler(this.Adaugare_carte_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

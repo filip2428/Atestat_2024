@@ -126,6 +126,7 @@
             this.împrumutăToolStripMenuItem.Name = "împrumutăToolStripMenuItem";
             this.împrumutăToolStripMenuItem.Size = new System.Drawing.Size(146, 54);
             this.împrumutăToolStripMenuItem.Text = "Împrumută";
+            this.împrumutăToolStripMenuItem.Click += new System.EventHandler(this.împrumutăToolStripMenuItem_Click);
             // 
             // returneazaToolStripMenuItem
             // 

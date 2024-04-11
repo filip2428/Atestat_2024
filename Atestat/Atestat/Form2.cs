@@ -48,5 +48,11 @@ namespace Atestat
             Vizualizare_Elevi vizElev = new Vizualizare_Elevi();
             vizElev.ShowDialog();
         }
+
+        private void împrumutăToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Imprumut rent = new Imprumut();
+            rent.ShowDialog();
+        }
     }
 }
