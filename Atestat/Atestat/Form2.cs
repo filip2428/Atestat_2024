@@ -54,5 +54,11 @@ namespace Atestat
             Imprumut rent = new Imprumut();
             rent.ShowDialog();
         }
+
+        private void returneazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Retur retur = new Retur();
+            retur.ShowDialog();
+        }
     }
 }

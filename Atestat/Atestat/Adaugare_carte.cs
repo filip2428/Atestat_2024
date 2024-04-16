@@ -23,22 +23,21 @@ namespace Atestat
         {
             try
             {
-                string NrInventar = txt_nr.Text;
                 string Titlu = txt_titlu.Text;
                 string Autor = txt_autor.Text;
                 string Categorie = txt_categorie.Text;
                 string Editura = txt_editura.Text;
-                int NrDetinute = Convert.ToInt32(txt_detinute.Text);
-                int NrImprumutate = Convert.ToInt32(txt_imprumutate.Text);
                 string Pozitie = txt_pozitie.Text;
-            if (NrInventar != "" && Titlu != "" && Autor != "" && Categorie != "" && Editura != "" && NrDetinute != 0 && NrImprumutate != 0)
+                string Nr_Copie = txt_NrCopie.Text;
+                string NrInventar = txt_nr.Text;
+            if (NrInventar != "" && Titlu != "" && Autor != "" && Categorie != "" && Editura != "" && Nr_Copie != "")
             {
 
                 try
                 {
                         if (Pozitie == "") Pozitie = "****";
                     con.Open();
-                    string querry = "INSERT INTO date_carti(Număr_de_inventar, Titlu, Autor, Categorie, Editură, Exemplare_Deţinute, Exemplare_Împrumutate, Poziție)values('" + NrInventar + "','" + Titlu + "','" + Autor + "','" + Categorie + "','" + Editura + "','" + NrDetinute + "','" + NrImprumutate + "','" + Pozitie + "')";
+                    string querry = "INSERT INTO Date_cartii(Titlu, Autor, Categorie, Editură, Poziție, Nr_Copie, Număr_de_inventar)values('" + Titlu + "','" + Autor + "','" + Categorie + "','" + Editura + "','" + Pozitie + "', '"+Nr_Copie+"', '" + NrInventar + "')";
                     SqlCommand cmd = new SqlCommand(querry, con);
                     cmd.ExecuteNonQuery();
                      
@@ -48,13 +47,12 @@ namespace Atestat
                     txt_autor.Clear();
                     txt_categorie.Clear();
                     txt_editura.Clear();
-                    txt_imprumutate.Clear();
-                    txt_detinute.Clear();
+                    txt_NrCopie.Clear();
                     txt_pozitie.Clear();
                 }
                 catch (Exception ex)
                 {
-                    //MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message);
                     MessageBox.Show("Una din datele introduse nu este corectă sau nu ai completat toate căsuțele obligatorii, te rog încearcă din nou", "Eroare", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
@@ -84,8 +82,7 @@ namespace Atestat
             txt_autor.Clear();
             txt_categorie.Clear();
             txt_editura.Clear();
-            txt_imprumutate.Clear();
-            txt_detinute.Clear();
+            txt_NrCopie.Clear();
             txt_pozitie.Clear();
         }
 

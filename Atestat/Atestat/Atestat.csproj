@@ -93,6 +93,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Retur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Retur.Designer.cs">
+      <DependentUpon>Retur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vizualizare_Carte.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Retur.resx">
+      <DependentUpon>Retur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vizualizare_Carte.resx">
       <DependentUpon>Vizualizare_Carte.cs</DependentUpon>
     </EmbeddedResource>

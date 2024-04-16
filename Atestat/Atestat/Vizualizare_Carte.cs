@@ -27,7 +27,7 @@ namespace Atestat
         private void Vizualizare_Carte_Load(object sender, EventArgs e)
         {
             panel1.Visible = false;
-            SqlCommand cmd = new SqlCommand("select * from date_carti",con);
+            SqlCommand cmd = new SqlCommand("select * from Date_cartii",con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -49,21 +49,20 @@ namespace Atestat
                 x = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             panel1.Visible = true;
-            SqlCommand cmdd = new SqlCommand("select * from date_carti where Număr_de_inventar = " + x + "",con);
+            SqlCommand cmdd = new SqlCommand("select * from Date_cartii where Nr_crt = " + x + "",con);
             SqlDataAdapter daa = new SqlDataAdapter(cmdd);
             DataSet dss = new DataSet();
             daa.Fill(dss);
 
             Row_id = Int64.Parse(dss.Tables[0].Rows[0][0].ToString());
 
-            txt_nr.Text = dss.Tables[0].Rows[0][0].ToString();
             txt_titlu.Text = dss.Tables[0].Rows[0][1].ToString();
             txt_autor.Text = dss.Tables[0].Rows[0][2].ToString();
             txt_categorie.Text = dss.Tables[0].Rows[0][3].ToString();
             txt_editura.Text = dss.Tables[0].Rows[0][4].ToString();
-            txt_detinute.Text = dss.Tables[0].Rows[0][5].ToString();
-            txt_imprumutate.Text = dss.Tables[0].Rows[0][6].ToString();
-            txt_pozitie.Text = dss.Tables[0].Rows[0][7].ToString();
+            txt_pozitie.Text = dss.Tables[0].Rows[0][5].ToString();
+            txt_NrCopie.Text = dss.Tables[0].Rows[0][6].ToString();
+            txt_nr.Text = dss.Tables[0].Rows[0][7].ToString();
         }
 
         private void cauta_nume_TextChanged(object sender, EventArgs e)
@@ -71,7 +70,7 @@ namespace Atestat
             if(cauta_nume.Text !="")
             {
                 panel1.Visible = false;
-                SqlCommand cmd = new SqlCommand("select * from date_carti where Titlu LIKE '"+cauta_nume.Text+ "%'", con);
+                SqlCommand cmd = new SqlCommand("select * from Date_cartii where Titlu LIKE '"+cauta_nume.Text+ "%'", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -81,7 +80,7 @@ namespace Atestat
             else
             {
                 panel1.Visible = false;
-                SqlCommand cmd = new SqlCommand("select * from date_carti", con);
+                SqlCommand cmd = new SqlCommand("select * from Date_cartii", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -112,19 +111,18 @@ namespace Atestat
                 string Autor = txt_autor.Text;
                 string Categorie = txt_categorie.Text;
                 string Editura = txt_editura.Text;
-                int NrDetinute = Convert.ToInt32(txt_detinute.Text);
-                int NrImprumutate = Convert.ToInt32(txt_imprumutate.Text);
+                string Nr_Copie = txt_NrCopie.Text;
                 string Pozitie = txt_pozitie.Text;
 
 
-                if (NrInventar != "" && Titlu != "" && Autor != "" && Categorie != "" && Editura != "" && NrDetinute != 0 && NrImprumutate != 0)
+                if (NrInventar != "" && Titlu != "" && Autor != "" && Categorie != "" && Editura != "" && Nr_Copie != "")
                 {
 
                     try
                     {
                         if (Pozitie == "") Pozitie = "****";
                         con.Open();
-                        string querry = "UPDATE date_carti set Număr_de_inventar = '"+NrInventar+"', Titlu = '"+Titlu+"', Autor = '"+Autor+"', Categorie = '"+Categorie+"', Editură = '"+Editura+"', Exemplare_Deţinute = '"+NrDetinute+"', Exemplare_Împrumutate = '"+NrImprumutate+"', Poziție = '"+Pozitie+ "' where Număr_de_inventar = '"+Row_id+"' ";
+                        string querry = "UPDATE Date_cartii set Număr_de_inventar = '"+NrInventar+"', Titlu = '"+Titlu+"', Autor = '"+Autor+"', Categorie = '"+Categorie+"', Editură = '"+Editura+"', Nr_Copie = '"+Nr_Copie+"', Poziție = '"+Pozitie+ "' where Nr_crt = '"+Row_id+"' ";
                         SqlCommand cmd = new SqlCommand(querry, con);
                         cmd.ExecuteNonQuery();
 
@@ -134,10 +132,9 @@ namespace Atestat
                         txt_autor.Clear();
                         txt_categorie.Clear();
                         txt_editura.Clear();
-                        txt_imprumutate.Clear();
-                        txt_detinute.Clear();
+                        txt_NrCopie.Clear();
                         txt_pozitie.Clear();
-                            SqlCommand cmd2 = new SqlCommand("select * from date_carti", con);
+                            SqlCommand cmd2 = new SqlCommand("select * from Date_cartii", con);
                             SqlDataAdapter da = new SqlDataAdapter(cmd2);
                             DataSet ds = new DataSet();
                             da.Fill(ds);
@@ -162,12 +159,12 @@ namespace Atestat
             if (MessageBox.Show("Datele vor fi șterse definitiv. Confirmi?", "Șterge", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 con.Open();
-                string querry = "DELETE from date_carti WHERE Număr_de_inventar = '" + Row_id + "'";
+                string querry = "DELETE from Date_cartii WHERE Nr_crt = '" + Row_id + "'";
                 SqlCommand cmd = new SqlCommand(querry, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Sters cu succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                SqlCommand cmd2 = new SqlCommand("select * from date_carti", con);
+                SqlCommand cmd2 = new SqlCommand("select * from Date_cartii", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd2);
                 DataSet ds = new DataSet();
                 da.Fill(ds);

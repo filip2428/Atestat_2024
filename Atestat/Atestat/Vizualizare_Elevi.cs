@@ -82,21 +82,21 @@ namespace Atestat
             }
 
             panel1.Visible = true;
-            SqlCommand cmd = new SqlCommand("select * from date_elevi where Număr_matricol = " + x + "", con);
+            SqlCommand cmd = new SqlCommand("select * from date_elevi where Nr_crt = " + x + "", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
 
             Row_id = Int64.Parse(ds.Tables[0].Rows[0][0].ToString());
 
-            txt_nrmatricol.Text = ds.Tables[0].Rows[0][0].ToString();
-            txt_cnp.Text = ds.Tables[0].Rows[0][1].ToString();
-            txt_nume.Text = ds.Tables[0].Rows[0][2].ToString();
-            txt_prenume.Text = ds.Tables[0].Rows[0][3].ToString();
-            txt_clasa.Text = ds.Tables[0].Rows[0][4].ToString();
-            txt_telElev.Text = ds.Tables[0].Rows[0][5].ToString();
-            txt_email.Text = ds.Tables[0].Rows[0][6].ToString();
-            txt_telParinte.Text = ds.Tables[0].Rows[0][7].ToString();
+            txt_nrmatricol.Text = ds.Tables[0].Rows[0][1].ToString();
+            txt_cnp.Text = ds.Tables[0].Rows[0][2].ToString();
+            txt_nume.Text = ds.Tables[0].Rows[0][3].ToString();
+            txt_prenume.Text = ds.Tables[0].Rows[0][4].ToString();
+            txt_clasa.Text = ds.Tables[0].Rows[0][5].ToString();
+            txt_telElev.Text = ds.Tables[0].Rows[0][6].ToString();
+            txt_email.Text = ds.Tables[0].Rows[0][7].ToString();
+            txt_telParinte.Text = ds.Tables[0].Rows[0][8].ToString();
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace Atestat
                         try
                         {
                             con.Open();
-                            string querry = "UPDATE date_elevi set Număr_matricol = '" + Nr_Matricol + "', CNP = '" + CNP + "', Nume = '" + Nume + "', Prenume = '" + Prenume + "', Clasa = '" + Clasa + "', Număr_de_telefon_elev = '" + Telefon_Elev + "', Email_elev = '" + Email_Elev + "', Număr_de_telefon_părinte = '" + Telefon_Parinte + "' where Număr_matricol = '" + Row_id + "' ";
+                            string querry = "UPDATE date_elevi set Număr_matricol = '" + Nr_Matricol + "', CNP = '" + CNP + "', Nume = '" + Nume + "', Prenume = '" + Prenume + "', Clasa = '" + Clasa + "', Număr_de_telefon_elev = '" + Telefon_Elev + "', Email_elev = '" + Email_Elev + "', Număr_de_telefon_părinte = '" + Telefon_Parinte + "' where Nr_crt = '" + Row_id + "' ";
                             SqlCommand cmd = new SqlCommand(querry, con);
                             cmd.ExecuteNonQuery();
 
@@ -160,7 +160,7 @@ namespace Atestat
             if (MessageBox.Show("Datele vor fi șterse definitiv. Confirmi?", "Șterge", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 con.Open();
-                string querry = "DELETE from date_elevi WHERE Număr_matricol = '" + Row_id + "'";
+                string querry = "DELETE from date_elevi WHERE Nr_crt = '" + Row_id + "'";
                 SqlCommand cmd = new SqlCommand(querry, con);
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Sters cu succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);

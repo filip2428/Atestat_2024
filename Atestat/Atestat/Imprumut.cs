@@ -37,8 +37,8 @@ namespace Atestat
             {
                 if (textBox6.Text!="")
                 {
-                    string querry = "Select Număr_de_inventar,Titlu, Autor from date_carti ";
-                    querry += "WHERE Titlu LIKE '"+textBox6.Text+ "%'";
+                    string querry = "Select Nr_crt,Număr_de_inventar,Titlu, Autor from Date_cartii ";
+                    querry += "WHERE Număr_de_inventar LIKE '" + textBox6.Text+ "%'";
                     SqlCommand cmd = new SqlCommand(querry,con);
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -53,7 +53,7 @@ namespace Atestat
                 else
                 {
                     search_result.Height = 0;
-                    SqlCommand cmd = new SqlCommand("select Număr_de_inventar,Titlu, Autor from date_carti", con);
+                    SqlCommand cmd = new SqlCommand("select Nr_crt,Număr_de_inventar,Titlu, Autor from Date_cartii", con);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     da.Fill(ds);
@@ -74,17 +74,14 @@ namespace Atestat
         {
             try
             {
-                /*DataGridViewRow row = this.search_result.Rows[e.RowIndex];
-                textBox6.Text = row.Cells["result"].Value.ToString();
-                search_result.Height = 0;*/
                 if (search_result.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     x = int.Parse(search_result.Rows[e.RowIndex].Cells[0].Value.ToString());
-                SqlCommand cmd = new SqlCommand("select * from date_carti WHERE Număr_de_inventar = " + x + "", con);
+                SqlCommand cmd = new SqlCommand("select * from Date_cartii WHERE Nr_crt = " + x + "", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-                textBox6.Text = ds.Tables[0].Rows[0][1].ToString();
+                textBox6.Text = ds.Tables[0].Rows[0][7].ToString();
                 search_result.Height = 0;
 
             }
@@ -108,6 +105,7 @@ namespace Atestat
             txt_nume.Clear();
             txt_prenume.Clear();
             txt_telefon.Clear();
+            textBox6.Clear();
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -122,11 +120,11 @@ namespace Atestat
                     DataSet ds = new DataSet();
                     da.Fill(ds);
 
-                    txt_nume.Text = ds.Tables[0].Rows[0][2].ToString();
-                    txt_prenume.Text = ds.Tables[0].Rows[0][3].ToString();
-                    txt_clasa.Text = ds.Tables[0].Rows[0][4].ToString();
-                    txt_telefon.Text = ds.Tables[0].Rows[0][5].ToString();
-                    txt_email.Text = ds.Tables[0].Rows[0][6].ToString();
+                    txt_nume.Text = ds.Tables[0].Rows[0][3].ToString();
+                    txt_prenume.Text = ds.Tables[0].Rows[0][4].ToString();
+                    txt_clasa.Text = ds.Tables[0].Rows[0][5].ToString();
+                    txt_telefon.Text = ds.Tables[0].Rows[0][6].ToString();
+                    txt_email.Text = ds.Tables[0].Rows[0][7].ToString();
                 }
             }
             catch(Exception ex)
@@ -134,6 +132,58 @@ namespace Atestat
                 MessageBox.Show("Număr matricol invalid","Eroare",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 //MessageBox.Show(ex.Message);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("select * from date_elevi WHERE Număr_matricol = " + search.Text + "", con2);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+
+            SqlCommand cmd3 = new SqlCommand("select * from Date_cartii WHERE Nr_crt = " + x + "", con);
+            SqlDataAdapter da2  = new SqlDataAdapter(cmd3);
+            DataSet ds2 = new DataSet();
+            da2.Fill(ds2);
+
+            if (ds.Tables[0].Rows[0][9].ToString() != "" && ds.Tables[0].Rows[0][11].ToString() != "" && ds.Tables[0].Rows[0][13].ToString() != "")
+                MessageBox.Show("Un elev poate imprumuta maxim 3 cărți", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else if (ds2.Tables[0].Rows[0][8].ToString() == "NU")
+            {
+                MessageBox.Show("Cartea este deja împrumutată", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                 con.Open();
+                        string querry = "UPDATE Date_cartii set DISPONIBIL = '"+"NU"+"'where Nr_crt = '"+x+"' ";
+                        SqlCommand cmd2 = new SqlCommand(querry, con);
+                        cmd2.ExecuteNonQuery();
+                con2.Open();
+                string querry2;
+                try
+                {
+                    if (ds.Tables[0].Rows[0][9].ToString() == "")
+                    {
+                        querry2 = "UPDATE date_elevi set Carte1 = '" + textBox6.Text + "', Retur1 = '" + dateTimePicker2.Text + "' where Număr_matricol = '" + search.Text + "' ";
+
+                    }
+                    else if (ds.Tables[0].Rows[0][11].ToString() == "")
+                    {
+                        querry2 = "UPDATE date_elevi set Carte2 = '" + textBox6.Text + "',Retur2 = '" + dateTimePicker2.Text + "' where Număr_matricol = '" + search.Text + "' ";
+                    }
+                    else
+                    {
+                        querry2 = "UPDATE date_elevi set Carte3 = '" + textBox6.Text + "', Retur3 = '" + dateTimePicker2.Text + "' where Număr_matricol = '" + search.Text + "' ";
+                    }
+                    SqlCommand cmd4 = new SqlCommand(querry2, con2);
+                    cmd4.ExecuteNonQuery();
+                MessageBox.Show("Împrumutat cu succes", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
+                con.Close();
+                con2.Close();
+            }
+
         }
     }
 }
