@@ -22,7 +22,13 @@ namespace Atestat
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult res;
+            res = MessageBox.Show("Vei pierde toate datele nesalvate", "Ești sigur?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (res == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else this.Show();
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
@@ -117,11 +123,16 @@ namespace Atestat
                     da.Fill(ds);
 
                     txt_nume.Text = ds.Tables[0].Rows[0][2].ToString();
+                    txt_prenume.Text = ds.Tables[0].Rows[0][3].ToString();
+                    txt_clasa.Text = ds.Tables[0].Rows[0][4].ToString();
+                    txt_telefon.Text = ds.Tables[0].Rows[0][5].ToString();
+                    txt_email.Text = ds.Tables[0].Rows[0][6].ToString();
                 }
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Număr matricol invalid","Eroare",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                //MessageBox.Show(ex.Message);
             }
         }
     }

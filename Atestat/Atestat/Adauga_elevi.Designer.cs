@@ -385,6 +385,7 @@
             this.Controls.Add(this.txt_cnp);
             this.Name = "Adauga_elevi";
             this.Text = "Adauga_elevi";
+            this.Load += new System.EventHandler(this.Adauga_elevi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

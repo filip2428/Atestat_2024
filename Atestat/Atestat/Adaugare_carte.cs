@@ -13,7 +13,7 @@ namespace Atestat
 {
     public partial class Adaugare_carte : Form
     {
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Elev10\Desktop\Atestat\Atestat\Atestat\Carti.mdf;Integrated Security=True");
+            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Carti.mdf;Integrated Security=True");
         public Adaugare_carte()
         {
             InitializeComponent();

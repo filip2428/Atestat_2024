@@ -13,7 +13,7 @@ namespace Atestat
 {
     public partial class Adauga_elevi : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Elev10\Desktop\Atestat\Atestat\Atestat\Elevi.mdf;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Elevi.mdf;Integrated Security=True");
         public Adauga_elevi()
         {
             InitializeComponent();
@@ -102,6 +102,11 @@ namespace Atestat
             {
                 e.Handled = true;
             }
+        }
+
+        private void Adauga_elevi_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
