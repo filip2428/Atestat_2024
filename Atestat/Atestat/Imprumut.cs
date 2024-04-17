@@ -17,9 +17,8 @@ namespace Atestat
             InitializeComponent();
         }
 
-        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Carti.mdf;Integrated Security=True");
-        SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Elevi.mdf;Integrated Security=True");
-
+        SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Elevi.mdf;Integrated Security=True");
+        SqlConnection con2 = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Carti.mdf;Integrated Security=True");
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult res;

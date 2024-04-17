@@ -17,7 +17,8 @@ namespace Atestat
         {
             InitializeComponent();
         }
-        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\hacfi\OneDrive\Documente\GitHub\Atestat_2024\Atestat\Atestat\Autentificare.mdf;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Autentificare.mdf;Integrated Security=True");
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
